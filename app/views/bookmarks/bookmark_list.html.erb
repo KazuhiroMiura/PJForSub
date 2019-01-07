@@ -1,0 +1,16 @@
+<h2>ブックマーク一覧</h2>
+<% if @bookmark_data != nil && @bookmark_data.size > 0 %>
+  <table border = "1">
+    <th>NO.</th><th>URL</th><th>カテゴリ</th><th>メモ</th><th>削除</th>
+    <% @bookmark_data.each_with_index do |data, i| %>
+      <tr>
+        <td><%= (i+1) %></td>
+        <td><%= link_to data.url, data.url, :target=>["_blank"] %></td>
+        <td><%= data.category %></td>
+        <td><%= data.memo %></td>
+        <td><%= button_to "削除", {:action => :delete}, data: {:confirm => "本当に削除しますか？"}, params: {del_id: data.id, user_id: data.user_id} %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+<% end %>

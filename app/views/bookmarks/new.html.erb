@@ -1,0 +1,21 @@
+<h2>ブックマーク追加</h2>
+<%= form_for @bookmark,:url => {:action => :create}, user_id: params[:user_id]  do |f| %>
+
+  <table border="1">
+    <tr>
+      <th><%= f.label :url, 'URL' %></th>
+      <td><%= f.text_field :url %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :category, 'カテゴリ' %></th>
+      <td><%= f.text_field :category %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :memo, 'メモ' %></th>
+      <td><%= f.text_field :memo %></td>
+    </tr>
+  </table>
+  <%= f.hidden_field :user_id, :value => params[:user_id] %>
+  <%= f.submit 'ブックマークを追加する' %>
+
+<% end %>
